@@ -1,0 +1,19 @@
+{% block content %}
+
+<p><a href="{% url 'myapps:view' %}">首页</a>>工单详情</p>
+<p>{{ topic.text }}{{ topic.people_start }}
+
+<ul>
+<li>转派时间  转派人  转派备注</li>
+{% for distr in distributes %}
+  <li>
+    <p>{{ distr.distribute_time|date:'M d,Y H:i' }}{{distr.distribute_people}}{{ distr.text|linebreaks }}</p>
+  </li>
+  {% empty %}
+  <li>
+  空
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock content %}

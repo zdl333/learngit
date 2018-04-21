@@ -1,0 +1,27 @@
+
+{% for topic in topics.object_list %}
+  <li>{{topic.date_start|date:'M d, Y H:i'}}
+      {{topic.text|linebreaks}}
+      {{topic.people_start}}
+      <a href="{% url 'myapps:information' topic.id %}">详情</a>
+      <a href="{% url 'myapps:edit_topic' topic.id %}">修改</a>
+      <a href="#">转派</a>
+      <a href="#">删除</a>  
+      <a href="#">完成</a>
+  </li>
+
+{% endfor %}
+
+<p>
+  {# topics.paginator.page_range 这个函数返回一个页码列表 #}
+  {# 即 range(1,topics.paginator.num_pages + 1) #}
+
+  {% for page_number in topics.paginator.page_range %}
+    {% ifequal page_number topics.number %}
+      {{ page_number }}
+    {% else %}  
+      <a href="?page={{ page_number }}">{{ page_number }}</a>
+    {% endifequal %}
+  {% endfor %}
+</p>
+<a href="{% url 'myapps:new_topic' %}">新增故障单</a>

@@ -1,0 +1,12 @@
+{% block content %}
+
+<p>修改故障单：</p>
+<form action="{% url 'myapps:edit_topic' topic.id %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">修改</button>
+</form> 
+
+
+
+{% endblock content %}
