@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Topic(models.Model):
-	"""故障工单内容、申告时间、完成时间、申告人、完成人、状态"""
+	"""故障工单内容、申告时间、完成时间、申告人、完成人、状态（是否完成）"""
 	text =  models.TextField()
 	date_start = models.DateTimeField(auto_now_add=True)
 	date_end = models.DateTimeField(null=True,blank=True)
@@ -17,9 +17,10 @@ class Topic(models.Model):
 
 
 class Distribute(models.Model):
-	"""故障工单转派过程、转派时间、转派备注、转派人"""
+	"""故障工单转派/反馈内容、时间、人"""
 	topic = models.ForeignKey(Topic)
 	text = models.TextField()
+	dis_type = models.CharField(max_length=10) #转派还是反馈
 	distribute_time = models.DateTimeField(auto_now_add=True)
 	distribute_people = models.CharField(max_length=50)
 
