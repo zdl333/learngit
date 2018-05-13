@@ -1,0 +1,12 @@
+{% block content %}
+
+<p>反馈：</p>
+<form action="{% url 'myapps:forward_topic1' topic.id %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">确定</button>
+</form> 
+
+
+
+{% endblock content %}

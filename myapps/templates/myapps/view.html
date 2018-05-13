@@ -4,8 +4,9 @@
       {{topic.text|linebreaks}}
       {{topic.people_start}}
       <a href="{% url 'myapps:information' topic.id %}">详情</a>
-      <a href="{% url 'myapps:edit_topic' topic.id %}">修改</a>
-      <a href="#">转派</a>
+      <a href="{% url 'myapps:edit_topic' topic.id %}" >修改</a>
+      <a href="{% url 'myapps:forward_topic' topic.id %}" target="_blank" >转派</a>
+      <a href="{% url 'myapps:forward_topic1' topic.id %}" target="_blank" >反馈</a>
       <a href="#">删除</a>  
       <a href="#">完成</a>
   </li>

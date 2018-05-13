@@ -1,0 +1,13 @@
+{% block content %}
+
+<p>转派：<select name="forwarder"></select></p>
+
+<form action="{% url 'myapps:forward_topic' topic.id %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">确定</button>
+</form> 
+
+
+
+{% endblock content %}
